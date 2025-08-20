@@ -115,8 +115,8 @@ java -jar rhea-trace-shell.jar -a ${your_package_name} -t 10 -o output.pb -r sch
 Clone 代码，并将 btrace 添加到 Podfile 中:
 
 ```ruby
-pod 'BTrace', :path => 'xxx/btrace-iOS'
-pod 'BTraceDebug', :path => 'xxx/btrace-iOS'
+pod 'BTrace', :subspecs => ['Core', 'Debug'], :path => 'xxx/btrace-iOS'
+pod 'fishhook', :git => 'https://github.com/facebook/fishhook.git', :branch => 'main'
 ```
 
 安装命令行工具：
@@ -125,11 +125,20 @@ pod 'BTraceDebug', :path => 'xxx/btrace-iOS'
 # 使用 homebrew
 brew install libusbmuxd
 brew install poetry
+
 # 在 BTraceTool 目录下执行
 poetry install
 ```
 
 ### Usage
+
+执行命令前先激活虚拟环境。
+```bash
+# 在 BTraceTool 目录下执行
+poetry shell
+# 或者
+poetry env activate
+```
 
 #### Record
 

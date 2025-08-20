@@ -118,8 +118,8 @@ Record trace data offline without Instruments to help find performance issue of 
 Clone source code, and add the following lines to your Podfile:
 
 ```ruby
-pod 'BTrace', :path => 'xxx/btrace-iOS'
-pod 'BTraceDebug', :path => 'xxx/btrace-iOS'
+pod 'BTrace', :subspecs => ['Core', 'Debug'], :path => 'xxx/btrace-iOS'
+pod 'fishhook', :git => 'https://github.com/facebook/fishhook.git', :branch => 'main'
 ```
 
 Install command line tool:
@@ -128,11 +128,20 @@ Install command line tool:
 # using homebrew
 brew install libusbmuxd
 brew install poetry
+
 # install from the BTraceTool directory
 poetry install
 ```
 
 ### Usage
+
+Activate the virtual environment before executing commands.
+```bash
+# activate from the BTraceTool directory
+poetry shell
+# or 
+poetry env activate
+```
 
 #### Record
 
